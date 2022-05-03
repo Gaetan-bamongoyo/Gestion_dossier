@@ -1,4 +1,4 @@
-<div class="nk-fmg-body">
+                                <div class="nk-fmg-body">
                                     <div class="nk-fmg-body-head d-none d-lg-flex">
                                         <div class="nk-fmg-search"><em class="icon ni ni-search"></em><input type="text"
                                                 class="form-control border-transparent form-focus-none"

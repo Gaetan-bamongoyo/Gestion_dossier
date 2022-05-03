@@ -11,7 +11,7 @@
     <meta name="description"
         content="A powerful and conceptual apps base dashboard template that especially build for developers and programmers.">
     <link rel="shortcut icon" href="images/favicon.png">
-    <title>File Manager | DashLite Admin Template</title>
+    <title>GESDOSSIER</title>
     <link rel="stylesheet" href="assets/css/dashlite6e0e.css?ver=3.0.0">
     <link id="skin-default" rel="stylesheet" href="assets/css/theme6e0e.css?ver=3.0.0">
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-91615293-4"></script>

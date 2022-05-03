@@ -1,6 +1,4 @@
-                                <?php
-                                    include('class/app.php');
-                                ?>
+                                
                                 <div class="nk-fmg-body">
                                     <div class="nk-fmg-body-content">
                                         <div class="nk-block-head nk-block-head-sm">

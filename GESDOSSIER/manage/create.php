@@ -38,14 +38,14 @@ if ($event == 'CREATE_EQUIPE') {
    header("Location: ../setting.php");
 }
 
- if ($event == 'CREATE_PERSONNE') {
+if ($event == 'CREATE_PERSONNE') {
    $id = $_POST['id'];
    $filename = $_FILES['photo']['name'];
    $data = [$_POST['nom'],$_POST['postnom'],$_POST['prenom'],$_POST['sexe'],$_POST['lieu'],$_POST['date'],$_POST['adresse'],$_POST['phone'],$_POST['email'],$_POST['matricule'],$filename,$_POST['id'],1];
    $sql = "INSERT INTO tbl_personne(nom, postnom, prenom, sexe, lieu_naissance, date_naissance, adresse, phone, email, matricule, photo, code_equipe, isActive) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
    if ($app->prepare($sql, $data, 1)) {
       if(!empty($filename)){
-         move_uploaded_file($_FILES['fichier']['tmp_name'], '../fichier/'.$filename);	
+         move_uploaded_file($_FILES['photo']['tmp_name'], '../fichier/'.$filename);	
          $_SESSION['success'] = 'Equipe créee';
       }
       else {
@@ -53,4 +53,21 @@ if ($event == 'CREATE_EQUIPE') {
       }
    }
    header("Location: ../personnel.php?id=$id");
+}
+
+if ($event == 'CREATE_DOSSIER') {
+   $id = $_POST['id'];
+   $filename = $_FILES['photo']['name'];
+   $data = [$filename,$_POST['id']];
+   $sql = "CALL proc_dossier(?,?)";
+   if ($app->prepare($sql, $data, 1)) {
+      if(!empty($filename)){
+         move_uploaded_file($_FILES['photo']['tmp_name'], '../fichier/'.$filename);	
+         $_SESSION['success'] = 'Equipe créee';
+      }
+      else {
+      $_SESSION['error'] = 'Equipe non créee';
+      }
+   }
+   header("Location: ../dossier.php?id=$id");
 }

@@ -1,6 +1,4 @@
-                                <?php
-                                    include('class/app.php');
-                                ?>
+             
                 <div class="nk-content ">
                     <div class="container-fluid">
                         <div class="nk-content-inner">

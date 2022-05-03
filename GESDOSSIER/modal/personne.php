@@ -6,7 +6,7 @@
                         aria-label="Close"><em class="icon ni ni-cross"></em></a>
                 </div>
                 <div class="modal-body">
-                    <form action="manage/create.php" class="form-validate is-alter" method="POST">
+                    <form action="manage/create.php" class="form-validate is-alter" method="POST" enctype="multipart/form-data">
                         <input type="hidden" name="event" value="CREATE_PERSONNE" required>
                         <input type="hidden" name="id" value="<?php echo $_GET['id']?>" required>
                         <div class="form-group">

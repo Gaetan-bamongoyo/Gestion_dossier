@@ -32,7 +32,7 @@
                             <div class="dropdown-inner user-card-wrap d-none d-md-block">
                                 <div class="user-card">
                                     <div class="user-avatar"><span>AB</span></div>
-                                    <div class="user-info"><span class="lead-text">Abu Bin Ishtiyak</span><span
+                                    <div class="user-info"><span class="lead-text"><?php echo $username?></span><span
                                             class="sub-text text-soft">info@softnio.com</span></div>
                                 </div>
                             </div>
@@ -43,14 +43,14 @@
                                     <li><a href="../user-profile-setting.html"><em
                                                 class="icon ni ni-setting-alt"></em><span>Account Setting</span></a>
                                     </li>
-                                    <li><a href="../user-profile-activity.html"><em
+                                    <li><a href="logout.php"><em
                                                 class="icon ni ni-activity-alt"></em><span>Login Activity</span></a>
                                     </li>
                                 </ul>
                             </div>
                             <div class="dropdown-inner">
                                 <ul class="link-list">
-                                    <li><a href="#"><em class="icon ni ni-signout"></em><span>Sign out</span></a></li>
+                                    <li><a href="logout.php"><em class="icon ni ni-signout"></em><span>Sign out</span></a></li>
                                 </ul>
                             </div>
                         </div>

@@ -1,6 +1,5 @@
 <?php
-
-    include('class/app.php');
+    include("includes/sessionconnected.php");
 
     include('includes/head.php');
 

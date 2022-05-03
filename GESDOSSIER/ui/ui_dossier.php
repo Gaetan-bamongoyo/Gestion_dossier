@@ -4,7 +4,7 @@
                                         <div class="nk-block-head nk-block-head-sm">
                                             <div class="nk-block-between position-relative">
                                                 <div class="nk-block-head-content">
-                                                    <h3 class="nk-block-title page-title">Equipe de travail</h3>
+                                                    <h3 class="nk-block-title page-title">Ensemble de dossier</h3>
                                                 </div>
                                                 <div class="nk-block-head-content">
                                                     <ul class="nk-block-tools g-1">
@@ -92,7 +92,7 @@
                                                                     data-bs-toggle="dropdown">Les operations</div>
                                                                 <div class="dropdown-menu dropdown-menu-xs">
                                                                     <ul class="link-list-opt no-bdr">
-                                                                        <li><a href="#affectation" data-bs-toggle="modal">
+                                                                        <li><a href="#dossier" data-bs-toggle="modal">
                                                                             <span>Nouveau</span></a></li>
                                                                     </ul>
                                                                 </div>
@@ -132,11 +132,7 @@
                                                 <div class="nk-files-list">
                                                 <?php
                                                 $id = $_GET['id'];
-                                                $sql = "SELECT * FROM tbl_personne INNER JOIN tbl_affectation
-                                                ON tbl_personne.id_personne = tbl_affectation.code_personne
-                                                INNER JOIN tbl_document
-                                                ON tbl_affectation.code_document = tbl_document.id_document
-                                                WHERE tbl_personne.id_personne = $id";
+                                                $sql = "SELECT * FROM tbl_dossier WHERE code_affectation = $id";
                                                 $req = $app->fetchPrepared($sql);
                                                 foreach ($req as $row) {
                                                 ?>
@@ -144,21 +140,22 @@
                                                         <div class="nk-file-info">
                                                             <div class="nk-file-title">
                                                                 <div class="nk-file-icon"><a class="nk-file-icon-link"
-                                                                        href="dossier.php?id=<?php echo $row['id_affectation']?>"><span class="nk-file-icon-type"><svg
+                                                                        href="#"><span class="nk-file-icon-type"><svg
                                                                                 xmlns="http://www.w3.org/2000/svg"
-                                                                                x="0px" y="0px" viewBox="0 0 72 72">
-                                                                                <path fill="#6C87FE"
-                                                                                    d="M57.5,31h-23c-1.4,0-2.5-1.1-2.5-2.5v-10c0-1.4,1.1-2.5,2.5-2.5h23c1.4,0,2.5,1.1,2.5,2.5v10	C60,29.9,58.9,31,57.5,31z" />
-                                                                                <path fill="#8AA3FF"
-                                                                                    d="M59.8,61H12.2C8.8,61,6,58,6,54.4V17.6C6,14,8.8,11,12.2,11h18.5c1.7,0,3.3,1,4.1,2.6L38,24h21.8	c3.4,0,6.2,2.4,6.2,6v24.4C66,58,63.2,61,59.8,61z" />
-                                                                                <path display="none" fill="#8AA3FF"
-                                                                                    d="M62.1,61H9.9C7.8,61,6,59.2,6,57c0,0,0-31.5,0-42c0-2.2,1.8-4,3.9-4h19.3	c1.6,0,3.2,0.2,3.9,2.3l2.7,6.8c0.5,1.1,1.6,1.9,2.8,1.9h23.5c2.2,0,3.9,1.8,3.9,4v31C66,59.2,64.2,61,62.1,61z" />
-                                                                                <path fill="#798BFF"
-                                                                                    d="M7.7,59c2.2,2.4,4.7,2,6.3,2h45c1.1,0,3.2,0.1,5.3-2H7.7z" />
+                                                                                viewBox="0 0 72 72">
+                                                                                <path
+                                                                                    d="M50,61H22a6,6,0,0,1-6-6V22l9-11H50a6,6,0,0,1,6,6V55A6,6,0,0,1,50,61Z"
+                                                                                    style="fill:#36c684" />
+                                                                                <path
+                                                                                    d="M25,20.556A1.444,1.444,0,0,1,23.556,22H16l9-11h0Z"
+                                                                                    style="fill:#95e5bd" />
+                                                                                <path
+                                                                                    d="M42,31H30a3.0033,3.0033,0,0,0-3,3V45a3.0033,3.0033,0,0,0,3,3H42a3.0033,3.0033,0,0,0,3-3V34A3.0033,3.0033,0,0,0,42,31ZM29,38h6v3H29Zm8,0h6v3H37Zm6-4v2H37V33h5A1.001,1.001,0,0,1,43,34ZM30,33h5v3H29V34A1.001,1.001,0,0,1,30,33ZM29,45V43h6v3H30A1.001,1.001,0,0,1,29,45Zm13,1H37V43h6v2A1.001,1.001,0,0,1,42,46Z"
+                                                                                    style="fill:#fff" />
                                                                             </svg></span></a></div>
                                                                 <div class="nk-file-name">
                                                                     <div class="nk-file-name-text"><a href="#"
-                                                                            class="title"><?php echo $row['designation_document']; ?></a>
+                                                                            class="title"><?php echo $row['dossier']?></a>
                                                                         <div class="asterisk"><a href="#"><em
                                                                                     class="asterisk-off icon ni ni-star"></em><em
                                                                                     class="asterisk-on icon ni ni-star-fill"></em></a>
@@ -167,8 +164,8 @@
                                                                 </div>
                                                             </div>
                                                             <ul class="nk-file-desc">
-                                                                <li class="date">Today</li>
-                                                                <li class="size">4.5 MB</li>
+                                                                <li class="date"><?php echo $row['dateAdd']?></li>
+                                                                <li class="size">235 KB</li>
                                                                 <li class="members">3 Members</li>
                                                             </ul>
                                                         </div>
@@ -179,18 +176,11 @@
                                                                         class="icon ni ni-more-h"></em></a>
                                                                 <div class="dropdown-menu dropdown-menu-end">
                                                                     <ul class="link-list-plain no-bdr">
-                                                                        <li><a href="dossier.php?id=<?php echo $row['id_affectation']?>"
-                                                                                data-bs-toggle="modal"><em
-                                                                                    class="icon ni ni-eye"></em><span>Details</span></a>
-                                                                        </li>
-                                                                        <li><a href="#" class="file-dl-toast"><em
+                                                                        <li><a href="download.php?file=<?php echo $row['dossier']?>" class="file-dl-toast"><em
                                                                                     class="icon ni ni-download"></em><span>Download</span></a>
                                                                         </li>
                                                                         <li><a href="#"><em
                                                                                     class="icon ni ni-pen"></em><span>Rename</span></a>
-                                                                        </li>
-                                                                        <li><a href="#"><em
-                                                                                    class="icon ni ni-trash"></em><span>Delete</span></a>
                                                                         </li>
                                                                     </ul>
                                                                 </div>
